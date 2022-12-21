@@ -13,13 +13,13 @@ export function App() {
     const x = e.currentTarget.textContent.toLowerCase();
     switch (x) {
       case 'good':
-        setGood(good + 1);
+        setGood(prevState => prevState + 1);
         break;
       case 'bad':
-        setNeutral(bad + 1);
+        setBad(prevState => prevState + 1);
         break;
       case 'neutral':
-        setBad(neutral + 1);
+        setNeutral(prevState => prevState + 1);
         break;
 
       default:
@@ -45,7 +45,7 @@ export function App() {
       </Section>
 
       <Section className="section" title="Statistics">
-        {!totalAverage > 0 ? (
+        {!totalAverage ? (
           <Notification />
         ) : (
           <Section>
